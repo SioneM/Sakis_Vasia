@@ -43,13 +43,19 @@
     header {
       text-align: center;
       padding: 100px 0 60px;
-      border-bottom: 1px solid #000;
+      border-bottom: none;
       overflow: hidden;
   height: 250px;
   
   opacity: 0; /* ξεκινά αόρατο */
   animation: fadeIn 1.5s ease-out forwards;
 }
+    .divider {
+  width: 100%;
+  height: 1px; /* πάχος */
+  background-color: #000; /* χρώμα */
+  margin: 0 auto; /* χωρίς περιθώρια */
+    }
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-20px); }
@@ -235,7 +241,9 @@
   <div class="logo">Σ | Β</div>
   <img src="Sakis-Vasia.png" alt="Σάκης & Βάσια" class="names-image">
     </header>
-
+    
+<div class="divider"></div>
+    
     <div class="content-section">
       <p>Με χαρά σας προσκαλούμε στο γάμο μας</p>
     </div>
