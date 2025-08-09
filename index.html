@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ο γάμος μας!</title>
 
-  <!-- Open Graph για προεπισκόπηση (ανέβασες την εικόνα στο GitHub raw) -->
+  <!-- Open Graph για προεπισκόπηση στο Messenger -->
   <meta property="og:title" content="Ο Γάμος μας - Σάκης & Βάσια" />
   <meta property="og:description" content="Με χαρά σας προσκαλούμε στο γάμο μας στις 20 Σεπτεμβρίου 2025." />
   <meta property="og:image" content="https://raw.githubusercontent.com/SioneM/Sakis_Vasia/main/Sakis-Vasia.png" />
@@ -13,126 +13,182 @@
   <meta property="og:url" content="https://sionem.github.io/Sakis_Vasia/" />
 
   <style>
-    * { box-sizing: border-box; margin:0; padding:0; }
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #fff;
+    @font-face {
+      font-family: 'MontserratZ';
+      src: url('./MontserratZ-Regular.woff2') format('woff2'),
+           url('./MontserratZ-Regular.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'MontserratZ', sans-serif;
+      font-weight: 400;
       color: #000;
       line-height: 1.6;
+    }
+
+    body {
+      background-color: #fff;
       padding: 5px 0;
     }
 
     .container {
       max-width: 1200px;
       width: calc(100% - 10px);
-      background: #fff;
+      background-color: #fff;
       border: 2px solid #000;
       margin: 0 auto;
-      padding: 10px 20px; /* μικρότερο padding πάνω/κάτω */
+      padding: 10px 20px;
     }
 
-    /* Header */
     header {
       text-align: center;
       padding: 80px 0 50px;
-      border-bottom: none;
+      overflow: hidden;
+      height: auto;
       opacity: 0;
       animation: fadeIn 1.5s ease-out forwards;
     }
+
+    .header-divider {
+      width: 80%;
+      height: 1px;
+      background-color: #000;
+      margin: 0 auto 20px auto;
+    }
+    
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-20px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    .logo { font-size: 3rem; font-weight:700; letter-spacing:2px; margin-bottom:10px; display:block; }
-    .names-image { max-width:100%; height:auto; margin-top:8px; }
-
-    /* ανεξάρτητη γραμμή - πιο στενή (80%) */
-    .header-divider {
-      width: 80%;
-      height: 1px;
-      background-color: #000;
-      margin: 0 auto 6px auto; /* πολύ πιο κοντά κάτω */
+    .logo {
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      display: block;
+      margin: 0 auto 15px;
     }
 
-    /* content sections */
-    .content-section { text-align:center; margin:20px 0; padding:0 20px; }
-    /* sections με τίτλο (γονείς/κουμπάροι) να είναι ακόμα πιο κοντά στο divider */
-    .content-section.heading-section { margin-top:8px; margin-bottom:18px; }
+    .names-image {
+      max-width: 100%;
+      height: auto;
+      margin-top: 15px;
+    }
+
+    .couple-names {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-top: 10px;
+    }
+
+    .content-section {
+      text-align: center;
+      margin: 35px 0;
+      padding: 0 20px;
+    }
 
     h2 {
-      font-size:1.6rem;
-      margin-bottom:10px;
-      border-bottom: none;
-      display:inline-block;
-      padding-bottom:5px;
+      font-size: 1.8rem;
+      margin-bottom: 15px; /* μικρότερο από πριν */
+      border-bottom: 1px solid #000;
+      display: inline-block;
+      padding-bottom: 5px;
     }
 
-    /* ονόματα γονέων / κουμπάρων - ίδιο μέγεθος */
-    .family-column p,
-    .koumbaroi-column p {
-      font-size:1rem;
-      margin:0;
-      line-height:1.4;
+    .date-banner {
+      background-color: #f0f0f0;
+      color: #000;
+      padding: 15px;
+      text-align: center;
+      font-size: 1.5rem;
+      margin: 30px 0;
+      border: 1px solid #000;
     }
 
     .families-container,
     .koumbaroi-container {
-      display:flex;
-      justify-content:center;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top:8px; /* πιο κοντά στον τίτλο */
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 15px;
     }
 
     .family-column,
     .koumbaroi-column {
-      flex:1 1 45%;
-      min-width:180px;
-      text-align:center;
+      flex: 1 1 45%;
+      min-width: 200px;
+      text-align: center;
+      font-size: 1rem; /* ίδιο μέγεθος */
     }
 
-    /* χάρτες */
-    .map-container, .small-map {
-      max-width:800px;
-      width:90%;
-      height:250px;
-      margin:16px auto;
-      border:1px solid #000;
-      overflow:hidden;
+    .map-container,
+    .small-map {
+      max-width: 800px;
+      width: 90%;
+      height: 250px;
+      margin: 20px auto;
+      border: 1px solid #000;
+      overflow: hidden;
     }
-    .map-container iframe, .small-map iframe { width:100%; height:100%; border:0; }
 
-    /* map button ως anchor (δεν είναι <button> μέσα σε <a>) */
-    .map-button {
-      display:inline-block;
-      background:#000;
-      color:#fff;
-      text-decoration:none;
-      padding:10px 22px;
-      border-radius:4px;
-      font-size:1rem;
-      margin:12px auto 0 auto;
-      transition: all .18s ease;
+    .map-container iframe,
+    .small-map iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
     }
-    .map-button:hover { background:#333; transform: translateY(-2px); }
 
-    /* footer */
-    footer { text-align:center; margin-top:36px; padding-top:18px; border-top:1px solid #000; font-size:0.95rem; }
-
-    /* responsive tweaks */
-    @media (max-width:768px) {
-      .logo { font-size:2.2rem; }
-      .names-image { margin-top:10px; }
-      .map-container, .small-map { height:200px; }
-      .family-column, .koumbaroi-column { flex:1 1 45%; min-width:160px; }
+    button {
+      background-color: #000;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin: 15px auto;
+      display: inline-block;
+      transition: all 0.3s;
+      border-radius: 3px;
     }
-    @media (max-width:480px) {
-      header { padding:60px 0 40px; }
-      .logo { font-size:1.8rem; }
-      .names-image { margin-top:8px; }
-      .map-container, .small-map { height:160px; }
-      .family-column, .koumbaroi-column { flex:1 1 45%; min-width:140px; }
+
+    button:hover {
+      background-color: #333;
+      transform: translateY(-2px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      border-top: 1px solid #000;
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #000;
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 10px 15px; }
+      .logo { font-size: 2.2rem; }
+      .couple-names { font-size: 1.8rem; }
+      .families-container, .koumbaroi-container { gap: 10px; }
+      .map-container, .small-map { height: 200px; }
+      .content-section { margin: 30px 0; padding: 0 10px; }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 8px; }
+      header { padding: 60px 0 40px; }
+      .logo { font-size: 1.8rem; }
+      .couple-names { font-size: 1.5rem; }
+      h2 { font-size: 1.4rem; }
+      .date-banner { font-size: 1.1rem; padding: 10px; }
+      .map-container, .small-map { height: 160px; }
+      .content-section { margin: 25px 0; padding: 0 8px; }
     }
   </style>
 </head>
@@ -140,7 +196,7 @@
   <div class="container">
     <header>
       <div class="logo">Σ | Β</div>
-      <img src="https://raw.githubusercontent.com/SioneM/Sakis_Vasia/main/Sakis-Vasia.png" alt="Σάκης & Βάσια" class="names-image">
+      <img src="Sakis-Vasia.png" alt="Σάκης & Βάσια" class="names-image">
     </header>
 
     <div class="header-divider"></div>
@@ -149,18 +205,15 @@
       <p>Με χαρά σας προσκαλούμε στο γάμο μας</p>
     </div>
 
-    <div class="date-banner content-section">
-      <div style="display:inline-block; background:#f0f0f0; padding:12px 18px; border:1px solid #000; font-size:1.2rem;">
-        Το Σάββατο, 20 Σεπτεμβρίου 2025 στις 18:00 στον Ι.Ν. Αγίου Αθανασίου Πυργετού Ν. Τρικάλων.
-      </div>
+    <div class="date-banner">
+      Το Σάββατο, 20 Σεπτεμβρίου 2025 στις 18:00 στον Ι.Ν. Αγίου Αθανασίου Πυργετού Ν. Τρικάλων.
     </div>
 
-    <!-- Οι ΓΟΝΕΙΣ μας: πιο κοντά στο divider -->
-    <div class="content-section heading-section">
+    <div class="content-section">
       <h2>Οι Γονείς μας</h2>
       <div class="families-container">
         <div class="family-column">
-          <p>Γιάννα Θανασάκη‑Μελίσση</p>
+          <p>Γιάννα Θανασάκη-Μελίσση</p>
         </div>
         <div class="family-column">
           <p>Γεώργιος Κόκκας<br>Ράνια Μπουκουβάλα</p>
@@ -168,8 +221,7 @@
       </div>
     </div>
 
-    <!-- Οι ΚΟΥΜΠΑΡΟΙ μας: επίσης κοντά -->
-    <div class="content-section heading-section">
+    <div class="content-section">
       <h2>Οι Κουμπάροι μας</h2>
       <div class="koumbaroi-container">
         <div class="koumbaroi-column">
@@ -185,38 +237,40 @@
       <h2>Ιερός Ναός Αγίου Αθανασίου</h2>
       <p>Πυργετός, Τρίκαλα</p>
       <div class="map-container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12305.174551201928!2d21.7457035!3d39.5529861!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1359192712c1e5d9%3A0x72a4a86346bf3f49!2zzpkuIM6dIM6RzrPOr86_z4UgzpHOuM6xzr3Osc-Dzq_Ov8-F!5e0!3m2!1sel!2sgr!4v1754698368061!5m2!1sel!2sgr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12305.174551201928!2d21.7457035!3d39.5529861!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1359192712c1e5d9%3A0x72a4a86346bf3f49!2zzpkuIM6dIM6RzrPOr86_z4UgzpHOuM6xzr3Osc-Dzq_Ov8-F!5e0!3m2!1sel!2sgr!4v1754698368061!5m2!1sel!2sgr" allowfullscreen="" loading="lazy"></iframe>
       </div>
-      <a class="map-button" href="https://maps.app.goo.gl/Sb5aRK1DnRxM7YQr6" target="_blank" rel="noopener noreferrer">Προβολή στο Google Maps</a>
+      <a href="https://maps.app.goo.gl/Sb5aRK1DnRxM7YQr6" target="_blank"><button>Προβολή στο Google Maps</button></a>
     </div>
 
     <div class="content-section">
       <h2>Δεξίωση</h2>
-      <p>Αετών Μέλαθρον Events<br>5ο χλμ Τρικάλων - Μεγαλοχωρίου</p>
+      <p>Αετών Μέλαθρον Events</p>
+      <p>5ο χλμ Τρικάλων - Μεγαλοχωρίου</p>
+      <p>Έναρξη στις 21:00</p>
       <div class="map-container">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1059.782257294801!2d21.822958977750325!3d39.55853290636944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13591f0a32753871%3A0x87e0d102d29f9885!2zQWV0b24gTWVsYXRocm9uIGV2ZW50cyA6OiDOkc61z4TPjs69IM6czq3Ou86xzrjPgc6_zr0gZXZlbnRz!5e1!3m2!1sel!2sgr!4v1754674699179!5m2!1sel!2sgr" allowfullscreen="" loading="lazy"></iframe>
       </div>
-      <a class="map-button" href="https://maps.app.goo.gl/9s7bUUZHQWSnYpRUA" target="_blank" rel="noopener noreferrer">Προβολή στο Google Maps</a>
+      <a href="https://maps.app.goo.gl/9s7bUUZHQWSnYpRUA" target="_blank"><button>Προβολή στο Google Maps</button></a>
     </div>
 
     <div class="content-section">
       <h2>Σπίτι Γαμπρού</h2>
-      <p>Πυργετός, Τρίκαλα</p>
+      <p>Πυργετός Τρικάλων</p>
       <div class="small-map">
         <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2379.5056864201165!2d21.744991975968308!3d39.54759677159258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMznCsDMyJzUxLjQiTiAyMcKwNDQnNTEuMiJF!5e1!3m2!1sel!2sgr!4v1754674945741!5m2!1sel!2sgr" allowfullscreen="" loading="lazy"></iframe>
       </div>
-      <a class="map-button" href="https://maps.app.goo.gl/XLNT6fuwuo9mU7hT8" target="_blank" rel="noopener noreferrer">Προβολή στο Google Maps</a>
+      <a href="https://maps.app.goo.gl/XLNT6fuwuo9mU7hT8" target="_blank"><button>Προβολή στο Google Maps</button></a>
     </div>
 
     <div class="content-section">
       <h2>Σπίτι Νύφης</h2>
-      <p>Πυργετός, Τρίκαλα</p>
+      <p>Πυργετός Τρικάλων</p>
       <div class="small-map">
         <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2378.0220146762176!2d21.753194175970478!3d39.5908417715844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMznCsDM1JzI3LjAiTiAyMcKwNDUnMjAuOCJF!5e1!3m2!1sel!2sgr!4v1754674991939!5m2!1sel!2sgr" allowfullscreen="" loading="lazy"></iframe>
       </div>
-      <a class="map-button" href="https://maps.app.goo.gl/gP1LtUzF73hU7L3e6" target="_blank" rel="noopener noreferrer">Προβολή στο Google Maps</a>
+      <a href="https://maps.app.goo.gl/gP1LtUzF73hU7L3e6" target="_blank"><button>Προβολή στο Google Maps</button></a>
     </div>
-
+    
     <footer>
       <p>Ανυπομονούμε να γιορτάσουμε μαζί σας!</p>
       <p>Παρακαλούμε επιβεβαιώστε την παρουσία σας μέχρι τις 30 Αυγούστου 2025</p>
